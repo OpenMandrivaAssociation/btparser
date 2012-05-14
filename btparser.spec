@@ -6,7 +6,7 @@ Group:   Development/Other
 License: GPLv2+
 URL:     http://fedorahosted.org/btparser
 Source0: https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
-BuildRequires: python-devel
+BuildRequires: pkgconfig(python)
 
 %description
 Btparser is a backtrace parser and analyzer, which works with
