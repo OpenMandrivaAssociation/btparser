@@ -86,8 +86,6 @@ Development libraries and headers for %{name}.
 %prep
 %setup -q
 
-autoreconf -fi
-
 %build
 %configure --disable-static
 %make
