@@ -1,6 +1,6 @@
 Name:    btparser
 Version: 0.16
-Release: 2
+Release: 3
 Summary: Parser and analyzer for backtraces produced by GDB
 Group:   Development/Other
 License: GPLv2+
@@ -94,9 +94,6 @@ autoreconf -fi
 
 %install
 %makeinstall_std
-
-# Remove all libtool archives (*.la) from modules directory.
-find %{buildroot} -regex ".*\.la$" | xargs rm -f --
 
 %check
 make check
