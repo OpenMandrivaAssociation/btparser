@@ -1,12 +1,18 @@
-Name:    btparser
-Version: 0.16
-Release: 3
-Summary: Parser and analyzer for backtraces produced by GDB
-Group:   Development/Other
-License: GPLv2+
-URL:     http://fedorahosted.org/btparser
-Source0: https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
-BuildRequires: pkgconfig(python)
+%define major 2
+%define libname %mklibname btparser %{major}
+
+Name:		btparser
+Version:	0.18
+Release:	1
+Summary:	Parser and analyzer for backtraces produced by GDB
+Group:		Development/Other
+License:	GPLv2+
+URL:		http://fedorahosted.org/btparser
+Source0:	https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
+Patch0:		btparser-0.18-automake1.12.patch
+BuildRequires:	python-devel
+BuildRequires:	pkgconfig(glib-2.0)
+Conflicts:	%{libname} < 0.18
 
 %description
 Btparser is a backtrace parser and analyzer, which works with
@@ -30,17 +36,15 @@ routines:
 %doc README NEWS COPYING TODO ChangeLog
 %{_bindir}/btparser
 %{_mandir}/man1/%{name}.1.*
+%{py_platsitedir}/%{name}/*
 
 #--------------------------------------------------------------------
 
-%define lib_major 2
-%define libname %mklibname btparser %{lib_major}
+%package -n %{libname}
+Summary:	Libraries for reporting crashes to different targets
+Group:		System/Libraries
 
-%package -n %libname
-Summary: Libraries for reporting crashes to different targets
-Group:   System/Libraries
-
-%description -n %libname
+%description -n %{libname}
 Btparser is a backtrace parser and analyzer, which works with
 backtraces produced by the GNU Project Debugger. It can parse a text
 file with a backtrace to a tree of C structures, allowing to analyze
@@ -58,26 +62,24 @@ routines:
   frames with and without the function name known (missing function
   name is caused by missing debugging symbols)
 
-%files -n %libname
-%{_libdir}/libbtparser.so.%{lib_major}*
-%{py_platsitedir}/%{name}/*
-
+%files -n %{libname}
+%{_libdir}/libbtparser.so.%{major}*
 
 #--------------------------------------------------------------------
 
-%define lib_name_devel %mklibname %{name} -d
+%define devname %mklibname %{name} -d
 
-%package -n %lib_name_devel
-Summary: Development libraries for %{name}
-Group: Development/Other
-Provides: %{name}-devel = %{version}-%{release}
-Provides: lib%{name}-devel = %{version}-%{release}
-Requires: %{name}%{?_isa} = %{version}-%{release}
+%package -n %{devname}
+Summary:	Development libraries for %{name}
+Group:		Development/Other
+Provides:	%{name}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
-%description -n %lib_name_devel
+%description -n %{devname}
 Development libraries and headers for %{name}.
 
-%files -n %lib_name_devel
+%files -n %{devname}
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
@@ -85,6 +87,8 @@ Development libraries and headers for %{name}.
 #--------------------------------------------------------------------
 %prep
 %setup -q
+%patch0 -p1
+autoreconf -fi
 
 %build
 %configure --disable-static
@@ -95,3 +99,15 @@ Development libraries and headers for %{name}.
 
 %check
 make check
+
+
+%changelog
+* Mon Mar 12 2012 Oden Eriksson <oeriksson@mandriva.com> 0.16-2
++ Revision: 784344
+- rebuild (so that it ends up in main, hopefully)
+
+* Wed Mar 07 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.16-1
++ Revision: 782778
+- BR: python-devel
+- imported package btparser
+
