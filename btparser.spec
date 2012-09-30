@@ -2,7 +2,7 @@
 %define libname %mklibname btparser %{major}
 
 Name:		btparser
-Version:	0.18
+Version:	0.19
 Release:	1
 Summary:	Parser and analyzer for backtraces produced by GDB
 Group:		Development/Other
