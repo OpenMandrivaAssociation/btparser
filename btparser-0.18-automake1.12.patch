@@ -1,0 +1,13 @@
+diff -urN btparser-0.18/configure.ac btparser-0.18-patched/configure.ac
+--- btparser-0.18/configure.ac	2012-08-01 00:45:39.000000000 +1100
++++ btparser-0.18-patched/configure.ac	2012-08-07 18:35:36.169214922 +1100
+@@ -8,6 +8,9 @@
+ AC_DISABLE_STATIC
+ AC_PROG_LIBTOOL
+ 
++AM_PROG_CC_C_O
++AM_PROG_AR
++
+ dnl get rid of glib
+ PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.21])
+ 
