@@ -2,7 +2,7 @@
 %define libname %mklibname btparser %{major}
 
 Name:		btparser
-Version:	0.19
+Version:	0.24
 Release:	1
 Summary:	Parser and analyzer for backtraces produced by GDB
 Group:		Development/Other
@@ -88,7 +88,7 @@ Development libraries and headers for %{name}.
 %prep
 %setup -q
 %patch0 -p1
-autoreconf -fi
+#autoreconf -fi
 
 %build
 %configure --disable-static
@@ -97,17 +97,8 @@ autoreconf -fi
 %install
 %makeinstall_std
 
+# Remove all libtool archives (*.la) from modules directory.
+find %{buildroot} -regex ".*\.la$" | xargs rm -f --
+
 %check
 make check
-
-
-%changelog
-* Mon Mar 12 2012 Oden Eriksson <oeriksson@mandriva.com> 0.16-2
-+ Revision: 784344
-- rebuild (so that it ends up in main, hopefully)
-
-* Wed Mar 07 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.16-1
-+ Revision: 782778
-- BR: python-devel
-- imported package btparser
-
