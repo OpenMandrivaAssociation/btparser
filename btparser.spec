@@ -1,6 +1,7 @@
 %define major	2
 %define libname %mklibname btparser %{major}
 %define devname %mklibname %{name} -d
+%define _disable_ld_no_undefined 1
 
 Name:		btparser
 Version:	0.24
