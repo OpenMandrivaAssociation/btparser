@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   btparser-0.24.tar.xz: aaade5dffa8f4bcd93e6675d1849265a8eee6961
+sources:
+  btparser-0.25.tar.xz: d812f24d690f82352e839536a618dad16d14d55c
