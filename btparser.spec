@@ -4,7 +4,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		btparser
-Version:	0.25
+Version:	0.26
 Release:	1
 Summary:	Parser and analyzer for backtraces produced by GDB
 Group:		Development/Other
@@ -77,4 +77,5 @@ make check
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
+
 
