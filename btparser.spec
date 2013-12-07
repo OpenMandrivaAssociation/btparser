@@ -5,7 +5,7 @@
 
 Name:		btparser
 Version:	0.26
-Release:	3
+Release:	4
 Summary:	Parser and analyzer for backtraces produced by GDB
 Group:		Development/Other
 License:	GPLv2+
