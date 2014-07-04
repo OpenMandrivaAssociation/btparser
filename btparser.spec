@@ -54,7 +54,9 @@ Development libraries and headers for %{name}.
 %apply_patches
 
 %build
-%configure2_5x \
+export PYTHON=%{_bindir}/python2
+export PYTHON_CONFIG=%{_bindir}/python2-config
+%configure \
 	--disable-static
 %make
 
