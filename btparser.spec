@@ -13,7 +13,7 @@ Url:		http://fedorahosted.org/btparser
 Source0:	https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
 Patch0:		btparser-0.18-automake1.12.patch
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 
 %description
 Btparser is a backtrace parser and analyzer, which works with
