@@ -9,7 +9,7 @@ Release:	7
 Summary:	Parser and analyzer for backtraces produced by GDB
 Group:		Development/Other
 License:	GPLv2+
-Url:		http://fedorahosted.org/btparser
+Url:		https://fedorahosted.org/btparser
 Source0:	https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
 Patch0:		btparser-0.18-automake1.12.patch
 BuildRequires:	pkgconfig(glib-2.0)
