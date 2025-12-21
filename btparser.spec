@@ -12,6 +12,11 @@ License:	GPLv2+
 Url:		https://fedorahosted.org/btparser
 Source0:	https://fedorahosted.org/released/btparser/%{name}-%{version}.tar.xz
 Patch0:		btparser-0.18-automake1.12.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(python2)
 
